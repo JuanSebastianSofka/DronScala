@@ -30,22 +30,28 @@ object Dron extends ListaComnados {
     val totalArriba = list(0)
     val totalAbajo = list(1)
 
-    if (totalArriba <= 100 && totalAbajo >= -50) {
-      println(
+    val resultado = (totalArriba, totalAbajo) match {
+      case (totalArriba, totalAbajo) if totalArriba <= 100 && totalAbajo >= -50 => println(
         """
           |Los resultados Finales para las siguiente coordendas son:
           |Arriba, Abajo, Izquierda, Derecha, Atrás, Adelante (Respectivamente)
           |""".stripMargin)
-      list
-    } else {
-      println(
-        """La coordenada arriba o abajo superan el límite
+        list
+
+      case (totalArriba, totalAbajo) if totalArriba > 100 || totalAbajo < -50 => println(
+        s"""La coordenada arriba o abajo superan el límite
           |Máxima coordenada arriba: 100
           |Máxima coodernada abajo: -50
+
+          |Coordenadas Encontradas
+          |Arriba: $totalArriba
+          |Abajo: $totalAbajo
+          |
           |Se presenta la coordenada inicial por defecto
           |""".stripMargin)
-      List(0, 0, 0, 0, 0, 0)
+        List(0, 0, 0, 0, 0, 0)
     }
+    resultado
   }
 
   override def obtenerPosicionFinal(list: List[Int]): Unit = {
