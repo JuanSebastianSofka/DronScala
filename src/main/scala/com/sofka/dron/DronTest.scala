@@ -17,6 +17,5 @@ object DronTest {
 
     val posicionFinalSinError = Dron.calcularPosicion(comandos2)
     Dron.obtenerPosicionFinal(posicionFinalSinError)
-
   }
 }

@@ -4,21 +4,13 @@ object Dron extends ListaComnados {
   override type Comandos = String
 
   override def calcularPosicion(list: List[Comandos]): List[Int] = {
-    var totalArriba = 0
-    var totalAbajo = 0
-    var totalIzquierda = 0
-    var totalDerecha = 0
-    var totalAtras = 0
-    var totalAdelante = 0
 
-    list.foreach {
-      case "Arriba" => totalArriba += 5
-      case "Abajo" => totalAbajo -= 5
-      case "Izquierda" => totalIzquierda -= 5
-      case "Derecha" => totalDerecha += 5
-      case "Atras" => totalAtras -= 5
-      case "Adelante" => totalAdelante += 5
-    }
+    val totalArriba = list.count(_ == "Arriba") * 5
+    val totalAbajo = list.count(_ == "Abajo") * -5
+    val totalIzquierda = list.count(_ == "Izquierda") * -5
+    val totalDerecha = list.count(_ == "Derecha") * 5
+    val totalAtras = list.count(_ == "Atras") * -5
+    val totalAdelante = list.count(_ == "Adelante") * 5
 
     val posicionFinal = List(totalArriba, totalAbajo, totalIzquierda, totalDerecha, totalAtras, totalAdelante)
 
@@ -40,15 +32,15 @@ object Dron extends ListaComnados {
 
       case (totalArriba, totalAbajo) if totalArriba > 100 || totalAbajo < -50 => println(
         s"""La coordenada arriba o abajo superan el límite
-          |Máxima coordenada arriba: 100
-          |Máxima coodernada abajo: -50
+           |Máxima coordenada arriba: 100
+           |Máxima coodernada abajo: -50
 
-          |Coordenadas Encontradas
-          |Arriba: $totalArriba
-          |Abajo: $totalAbajo
-          |
-          |Se presenta la coordenada inicial por defecto
-          |""".stripMargin)
+           |Coordenadas Encontradas
+           |Arriba: $totalArriba
+           |Abajo: $totalAbajo
+           |
+           |Se presenta la coordenada inicial por defecto
+           |""".stripMargin)
         List(0, 0, 0, 0, 0, 0)
     }
     resultado
