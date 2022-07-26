@@ -16,7 +16,7 @@ El dron comienza en la posición (0,0,0,0,0,0), Arriba, Abajo, Izquierda, Derech
 
 ## Consideraciones
 
-```python
+```bash
 Para probar si el ejercicio está bueno, le pasaremos una lista de comandos y al final debe 
 imprimir en qué posición quedó.
 
